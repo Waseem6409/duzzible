@@ -1,0 +1,52 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.top .profileContainer {
+  display: flex;
+  align-items: center;
+}
+.top .profileContainer img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.top .profileContainer h6 {
+  margin-left: 10px;
+}
+.top .fileContainer {
+  display: flex;
+  align-items: center;
+}
+
+.dateContainer {
+  display: flex;
+}
+.dateContainer h6 {
+  margin: 0;
+}
+.dateContainer h6:nth-child(2) {
+  margin-left: 10px;
+}
+
+.descriptionContainer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileListContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.fileListContainer .file {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.fileListContainer .file h6 {
+  margin: 10px 0;
+}/*# sourceMappingURL=GistList.module.css.map */
