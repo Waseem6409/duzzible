@@ -5,6 +5,7 @@ import GlobalStyles from "./GlobalStyle";
 import Gist from "./components/Gist";
 import { getPublicGists, getGistForUser } from "./services/gistService";
 import { getUniqueGists } from "./utils/utils";
+import toast, { Toaster } from "react-hot-toast";
 
 export const GistContext = createContext();
 
@@ -18,7 +19,9 @@ const App = () => {
       const data = await getPublicGists();
 
       setGists(data?.data);
-    } catch (error) {}
+    } catch (error) {
+      toast.error("An error occured while fetching data");
+    }
   };
 
   const getGistsByUser = async (username) => {
@@ -29,7 +32,13 @@ const App = () => {
       let array = JSON.parse(JSON.stringify(gists));
       array = array.concat(data?.data);
       setGists([...getUniqueGists(array)]);
-    } catch (error) {}
+    } catch (error) {
+      if (error?.message) {
+        toast.error("No user found with this name");
+      } else {
+        toast.error("An error occured while fetching data");
+      }
+    }
   };
 
   useEffect(() => {
@@ -38,6 +47,7 @@ const App = () => {
 
   return (
     <Wrapper className="App" data-testid="app">
+      <Toaster />
       <GistContext.Provider
         value={{
           gists,
